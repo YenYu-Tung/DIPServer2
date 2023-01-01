@@ -22,6 +22,7 @@ def perform_style_transfer(content_image, style_image):
     stylized_image = output[0]
     return Image.fromarray(np.uint8(stylized_image[0] * 255))
 
+
 with gr.Blocks() as demo:
     gr.Markdown(
         "# Style Transfer <br>")
@@ -31,23 +32,21 @@ with gr.Blocks() as demo:
         with gr.Row():
             image_input0 = gr.Image(label="Content Image")
             image_input1 = gr.Image(label="Style Image")
-            with gr.Column(): 
-              gr.Markdown(
-                  "### This models's style must be chosen in these 4 styles:")
-              styles = gr.Examples(examples=["styles/Arles.jpg", "styles/starryNight.jpg", "styles/theMuse.jpg", "styles/UnderTheWave.jpg"],
-                                    inputs=[image_input1])
-        image_button1 = gr.Button("Transfer")   
+            with gr.Column():
+                gr.Markdown(
+                    "### This models's style must be chosen in these 4 styles:")
+                styles = gr.Examples(examples=["styles/Arles.jpg", "styles/starryNight.jpg", "styles/theMuse.jpg", "styles/UnderTheWave.jpg"], inputs=[image_input1], label="Style Image")
+        image_button1 = gr.Button("Transfer")
         image_output0 = gr.Image(label="Output Image")
     with gr.Tab("Model2"):
         with gr.Row():
             image_input2 = gr.Image(label="Content Image")
             image_input3 = gr.Image(label="Style Image")
-            with gr.Column(): 
-              gr.Markdown(
-                  "### This models's style must be chosen in these 4 styles:")
-              styles2 = gr.Examples(examples=["styles/Arles.jpg", "styles/starryNight.jpg", "styles/theMuse.jpg", "styles/UnderTheWave.jpg"],
-                                    inputs=[image_input3])
-        image_button2 = gr.Button("Transfer") 
+            with gr.Column():
+                gr.Markdown(
+                    "### This models's style must be chosen in these 4 styles:")
+                styles2 = gr.Examples(examples=["styles/Arles.jpg", "styles/starryNight.jpg", "styles/theMuse.jpg", "styles/UnderTheWave.jpg"], inputs=[image_input3], label="Style Image")
+        image_button2 = gr.Button("Transfer")
         image_output1 = gr.Image(label="Output Image")
     with gr.Tab("Model3"):
         with gr.Row():
